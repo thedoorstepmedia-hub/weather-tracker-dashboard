@@ -1,0 +1,35 @@
+[
+  {
+    "timestamp": "2026-09-29T00:13:59.499322+00:00",
+    "national_risk_score": 9.5,
+    "total_active_alerts": 10
+  },
+  {
+    "timestamp": "2026-09-29T00:23:46.738103+00:00",
+    "national_risk_score": 9.5,
+    "national_auto_pressure_index": 100,
+    "national_property_pressure_index": 100,
+    "total_active_alerts": 10
+  },
+  {
+    "timestamp": "2026-09-29T00:24:16.029697+00:00",
+    "national_risk_score": 9.5,
+    "national_auto_pressure_index": 100,
+    "national_property_pressure_index": 100,
+    "total_active_alerts": 10
+  },
+  {
+    "timestamp": "2026-09-29T00:25:42.756903+00:00",
+    "national_risk_score": 9.5,
+    "national_auto_pressure_index": 100,
+    "national_property_pressure_index": 100,
+    "total_active_alerts": 10
+  },
+  {
+    "timestamp": "2026-09-29T04:52:54.046789+00:00",
+    "national_risk_score": 9.5,
+    "national_auto_pressure_index": 100,
+    "national_property_pressure_index": 100,
+    "total_active_alerts": 10
+  }
+]

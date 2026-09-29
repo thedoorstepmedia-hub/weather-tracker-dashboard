@@ -1,0 +1,122 @@
+<!-- When editing app.js or styles.css, bump the ?v= query string on both
+     tags below - GitHub Pages' CDN caches these aggressively, and without a
+     new version string, visitors' browsers can keep serving old JS/CSS long
+     after a redeploy (the data/*.json files are unaffected, they're always
+     fetched with cache: "no-store"). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canada Weather Claims Risk Tracker</title>
+<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.4-2A5 5 0 0 0 6.5 18"/><path d="M9 19v2M12 19v2M15 19v2"/></svg>
+        </span>
+        <div>
+          <h1>Weather claims-risk tracker</h1>
+          <p class="subtitle">Canada-wide severe weather, watched for claims call-volume impact</p>
+        </div>
+      </div>
+      <div class="updated" id="updated-at"><span class="live-dot" aria-hidden="true"></span>Loading…</div>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="hero-main">
+        <div class="hero-label">National risk level</div>
+        <div class="hero-value" id="national-bucket">—</div>
+        <p class="hero-summary" id="hero-summary">Loading current alerts…</p>
+        <div class="hero-action" id="hero-action" hidden>
+          <div class="hero-action-headline" id="hero-action-headline"></div>
+          <details>
+            <summary>Suggested checklist</summary>
+            <ul class="playbook-list" id="hero-playbook"></ul>
+          </details>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="kpi-total-alerts">—</div>
+          <div class="hero-stat-label">Active alerts</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="kpi-provinces">—</div>
+          <div class="hero-stat-label">Regions affected</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" id="kpi-top-province">—</div>
+          <div class="hero-stat-label">Highest risk</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Advance outlook</h2>
+      </div>
+      <p class="section-hint">
+        Environment Canada issues a <strong>watch</strong> when conditions may develop, typically hours to a day
+        or two before a warning would follow &mdash; the closest thing to a heads-up this data supports. Watches
+        are rarer than warnings, so this is often empty.
+      </p>
+      <div id="advance-outlook-list"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Active alerts map</h2>
+        <div class="legend" id="map-legend"></div>
+      </div>
+      <div id="alerts-map" style="height:420px;width:100%" role="img" aria-label="Map of Canada showing active severe weather alert areas, colored by risk level"></div>
+      <p class="section-hint">Click any shaded area to zoom in.</p>
+    </section>
+
+    <section class="card">
+      <h2>Risk by region</h2>
+      <div class="province-grid" id="province-grid"></div>
+    </section>
+
+    <section class="card">
+      <h2>National risk trend</h2>
+      <div class="chart-wrap">
+        <canvas id="trend-chart" role="img" aria-label="Line chart of national weather claims risk score over recent tracker runs"></canvas>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Recent events</h2>
+      <p class="section-hint" id="tracking-since-hint"></p>
+      <div id="recent-events-list"></div>
+    </section>
+
+    <details class="methodology">
+      <summary>How these numbers are calculated</summary>
+      <p>
+        Risk scores and auto/property pressure indices are a transparent, documented
+        heuristic (alert severity &times; a regional exposure proxy &times; a generic auto/property loss-pattern split) &mdash;
+        not an official forecast. Claims-timing phases and the suggested checklist use a generic published P&amp;C
+        pattern, not Intact-specific data. Historical context (percentile, similar events, seasonal baseline, records)
+        is computed purely from this tracker's own accumulated public weather history &mdash; no company data is
+        used or stored anywhere in this tool, including the private source repo.
+      </p>
+    </details>
+
+    <footer class="page-footer">
+      <p>
+        Data source: <a href="https://api.weather.gc.ca/collections/weather-alerts" target="_blank" rel="noopener">Environment Canada MSC GeoMet weather-alerts API</a>.
+        Refreshed every 15 minutes.
+      </p>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="app.js?v=5"></script>
+</body>
+</html>
